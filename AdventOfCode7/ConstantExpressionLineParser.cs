@@ -3,6 +3,7 @@
 // </copyright>
 
 using System;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode7
 {
@@ -13,6 +14,11 @@ namespace AdventOfCode7
     /// </summary>
     internal sealed class ConstantExpressionLineParser : AssignmentParser
     {
+        /// <summary>
+        /// Gets aregular expression that matches one or more digits.
+        /// </summary>
+        protected override Regex ExpressionRegex => new Regex(@"\d+");
+
         /// <summary>
         /// Given a string of digits, return a ConstantExpression whose value
         /// in base 10 is that string of digits.

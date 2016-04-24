@@ -13,18 +13,21 @@ namespace AdventOfCode7
     /// </summary>
     internal abstract class AssignmentParser : ILineParser
     {
-        private static readonly Regex ConstantExpressionLineRegex = new Regex(@"(\d+) -> (.*)");
+        /// <summary>
+        /// Gets a regex that must match the expression partof the assignment.
+        /// </summary>
+        protected abstract Regex ExpressionRegex { get; }
 
         /// <inheritdoc/>
         public bool CanParse(string line)
         {
-            return ConstantExpressionLineRegex.IsMatch(line);
+            return AssignmentRegex().IsMatch(line);
         }
 
         /// <inheritdoc/>
         public Assignment GetAssignment(string line)
         {
-            var match = ConstantExpressionLineRegex.Match(line);
+            var match = AssignmentRegex().Match(line);
             var expressionText = match.Groups[1].Value;
             var variableName = match.Groups[2].Value;
 
@@ -40,5 +43,7 @@ namespace AdventOfCode7
         /// <param name="expressionText">The text representation of the expression.</param>
         /// <returns>An expression.</returns>
         protected abstract Expression BuildExpression(string expressionText);
+
+        private Regex AssignmentRegex() => new Regex($@"({ExpressionRegex}) -> (.*)");
     }
 }
