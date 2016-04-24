@@ -4,10 +4,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode7
 {
@@ -18,10 +16,17 @@ namespace AdventOfCode7
     {
         private static void Main()
         {
-            var lines = GetLinesFrom("input.txt");
-            var targets = lines.Select(ExtractTargetFrom).ToList();
+            ILineParser parser = new ConstantExpressionLineParser();
 
-            Trace.Assert(targets.Count == targets.Distinct().Count(), "targets are not unique");
+            var lines = GetLinesFrom("input.txt");
+            var targets = from line in lines
+                          where parser.CanParse(line)
+                          select parser.GetParsedExpression(line);
+
+            foreach (var expression in targets)
+            {
+                Console.WriteLine(expression.GetValue());
+            }
         }
 
         private static IEnumerable<string> GetLinesFrom(string filename)
@@ -35,19 +40,6 @@ namespace AdventOfCode7
                     line = file.ReadLine();
                 }
             }
-        }
-
-        private static string ExtractTargetFrom(string line)
-        {
-            var regex = new Regex(".* -> (.*)");
-            var match = regex.Match(line);
-
-            if (match.Success)
-            {
-                return match.Groups[1].Value;
-            }
-
-            throw new ArgumentException("Does not match expected format expr -> var", nameof(line));
         }
     }
 }
