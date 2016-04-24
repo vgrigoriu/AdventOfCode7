@@ -29,18 +29,23 @@ namespace AdventOfCode7
         public Assignment GetAssignment(string line)
         {
             var match = ConstantExpressionLineRegex.Match(line);
-
             var expressionText = match.Groups[1].Value;
+            var variableName = match.Groups[2].Value;
 
+            return new Assignment(
+                new Variable(variableName),
+                BuildExpression(expressionText));
+        }
+
+        private Expression BuildExpression(string expressionText)
+        {
             ushort value;
             if (ushort.TryParse(expressionText, out value))
             {
-                return new Assignment(
-                    new Variable(match.Groups[2].Value),
-                    new ConstantExpression(value));
+                return new ConstantExpression(value);
             }
 
-            throw new ArgumentException($"Cannot parse line as constant expression: {line}", nameof(line));
+            throw new ArgumentException($"Cannot parse input as constant expression: {expressionText}", nameof(expressionText));
         }
     }
 }
