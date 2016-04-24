@@ -28,12 +28,12 @@ namespace AdventOfCode7
         public Assignment GetAssignment(string line)
         {
             var match = AssignmentRegex().Match(line);
-            var expressionText = match.Groups[1].Value;
-            var variableName = match.Groups[2].Value;
+            var expressionText = match.Groups["exp"].Value;
+            var variableName = match.Groups["var"].Value;
 
             return new Assignment(
                 new Variable(variableName),
-                BuildExpression(expressionText));
+                BuildExpression(expressionText, match.Groups));
         }
 
         /// <summary>
@@ -41,9 +41,10 @@ namespace AdventOfCode7
         /// expression text given.
         /// </summary>
         /// <param name="expressionText">The text representation of the expression.</param>
+        /// <param name="groups">The groups created by matching the regular expression agains the line.</param>
         /// <returns>An expression.</returns>
-        protected abstract Expression BuildExpression(string expressionText);
+        protected abstract Expression BuildExpression(string expressionText, GroupCollection groups);
 
-        private Regex AssignmentRegex() => new Regex($@"({ExpressionRegex}) -> (.*)");
+        private Regex AssignmentRegex() => new Regex($@"(?<exp>{ExpressionRegex}) -> (?<var>.*)");
     }
 }

@@ -14,18 +14,32 @@ namespace AdventOfCode7
     /// </summary>
     internal static class Program
     {
+        private static ILineParser[] parsers =
+            {
+                new ConstantExpressionLineParser(),
+                new NotExpressionLineParser()
+            };
+
         private static void Main()
         {
-            ILineParser parser = new ConstantExpressionLineParser();
-
             var lines = GetLinesFrom("input.txt");
             var assignments = from line in lines
-                              where parser.CanParse(line)
-                              select parser.GetAssignment(line);
+                              from assignment in ParseLine(line)
+                              select assignment;
 
             foreach (var assignment in assignments)
             {
-                Console.WriteLine($"{assignment.Variable.Name} = {assignment.Expression.GetValue()}");
+                Console.WriteLine($"{assignment.Variable} = {assignment.Expression}");
+            }
+        }
+
+        private static IEnumerable<Assignment> ParseLine(string line)
+        {
+            var matchingParser = parsers.FirstOrDefault(parser => parser.CanParse(line));
+
+            if (matchingParser != null)
+            {
+                yield return matchingParser.GetAssignment(line);
             }
         }
 

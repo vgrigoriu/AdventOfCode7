@@ -23,5 +23,14 @@ namespace AdventOfCode7
         /// Gets the name of the variable.
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// Returns the name of the variable.
+        /// </summary>
+        /// <returns>The name of the variable.</returns>
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

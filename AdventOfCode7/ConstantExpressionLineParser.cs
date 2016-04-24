@@ -24,9 +24,10 @@ namespace AdventOfCode7
         /// in base 10 is that string of digits.
         /// </summary>
         /// <param name="expressionText">The string of digits to parse.</param>
+        /// <param name="groups">This parameter is ignored here.</param>
         /// <returns>A constant expression.</returns>
         /// <exception cref="ArgumentException">The given text cannot be parsed as an unsigned short.</exception>
-        protected override Expression BuildExpression(string expressionText)
+        protected override Expression BuildExpression(string expressionText, GroupCollection groups)
         {
             ushort value;
             if (ushort.TryParse(expressionText, out value))
