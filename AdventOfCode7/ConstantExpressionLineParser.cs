@@ -3,7 +3,6 @@
 // </copyright>
 
 using System;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode7
 {
@@ -12,32 +11,16 @@ namespace AdventOfCode7
     /// for example:
     ///     14146 -> b
     /// </summary>
-    internal sealed class ConstantExpressionLineParser : ILineParser
+    internal sealed class ConstantExpressionLineParser : AssignmentParser
     {
-        private static readonly Regex ConstantExpressionLineRegex = new Regex(@"(\d+) -> (.*)");
-
-        /// <inheritdoc/>
-        public bool CanParse(string line)
-        {
-            return ConstantExpressionLineRegex.IsMatch(line);
-        }
-
-        /// <inheritdoc/>
-        /// <exception cref="ArgumentException">
-        /// The given line cannot be parsed as a constant expression assignment.
-        /// </exception>
-        public Assignment GetAssignment(string line)
-        {
-            var match = ConstantExpressionLineRegex.Match(line);
-            var expressionText = match.Groups[1].Value;
-            var variableName = match.Groups[2].Value;
-
-            return new Assignment(
-                new Variable(variableName),
-                BuildExpression(expressionText));
-        }
-
-        private Expression BuildExpression(string expressionText)
+        /// <summary>
+        /// Given a string of digits, return a ConstantExpression whose value
+        /// in base 10 is that string of digits.
+        /// </summary>
+        /// <param name="expressionText">The string of digits to parse.</param>
+        /// <returns>A constant expression.</returns>
+        /// <exception cref="ArgumentException">The given text cannot be parsed as an unsigned short.</exception>
+        protected override Expression BuildExpression(string expressionText)
         {
             ushort value;
             if (ushort.TryParse(expressionText, out value))
