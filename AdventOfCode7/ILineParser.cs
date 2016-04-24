@@ -17,10 +17,10 @@ namespace AdventOfCode7
         bool CanParse(string line);
 
         /// <summary>
-        /// Returns the <see cref="Expression" /> parsed from the given line.
+        /// Returns the <see cref="Assignment" /> parsed from the given line.
         /// </summary>
         /// <param name="line">The line to parse.</param>
-        /// <returns>The <see cref="Expression" /> parsed from the given line.</returns>
-        Expression GetParsedExpression(string line);
+        /// <returns>The <see cref="Assignment" /> parsed from the given line.</returns>
+        Assignment GetAssignment(string line);
     }
 }

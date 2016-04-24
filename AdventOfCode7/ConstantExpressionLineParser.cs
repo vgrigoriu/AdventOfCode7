@@ -24,9 +24,9 @@ namespace AdventOfCode7
 
         /// <inheritdoc/>
         /// <exception cref="ArgumentException">
-        /// The given line cannot be parsed as a constant expression
+        /// The given line cannot be parsed as a constant expression assignment.
         /// </exception>
-        public Expression GetParsedExpression(string line)
+        public Assignment GetAssignment(string line)
         {
             var match = ConstantExpressionLineRegex.Match(line);
 
@@ -35,7 +35,9 @@ namespace AdventOfCode7
             ushort value;
             if (ushort.TryParse(expressionText, out value))
             {
-                return new ConstantExpression(value);
+                return new Assignment(
+                    new Variable(match.Groups[2].Value),
+                    new ConstantExpression(value));
             }
 
             throw new ArgumentException($"Cannot parse line as constant expression: {line}", nameof(line));

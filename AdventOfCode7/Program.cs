@@ -19,13 +19,13 @@ namespace AdventOfCode7
             ILineParser parser = new ConstantExpressionLineParser();
 
             var lines = GetLinesFrom("input.txt");
-            var targets = from line in lines
-                          where parser.CanParse(line)
-                          select parser.GetParsedExpression(line);
+            var assignments = from line in lines
+                              where parser.CanParse(line)
+                              select parser.GetAssignment(line);
 
-            foreach (var expression in targets)
+            foreach (var assignment in assignments)
             {
-                Console.WriteLine(expression.GetValue());
+                Console.WriteLine($"{assignment.Variable.Name} = {assignment.Expression.GetValue()}");
             }
         }
 
