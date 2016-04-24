@@ -71,4 +71,8 @@
   <Rules AnalyzerId="Wintellect.Analyzers" RuleNamespace="Wintellect.Analyzers">
     <Rule Id="Wintellect004" Action="Hidden" />
   </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1101" Action="Hidden" />
+    <Rule Id="SX1101" Action="Warning" />
+  </Rules>
 </RuleSet>
