@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode7
@@ -8,12 +11,20 @@ namespace AdventOfCode7
     {
         static void Main()
         {
-            using (var file = File.OpenText("input.txt"))
+            var lines = GetLinesFrom("input.txt");
+            var targets = lines.Select(ExtractTargetFrom).ToList();
+
+            Trace.Assert(targets.Count() == targets.Distinct().Count(), "targets are not unique");
+        }
+
+        private static IEnumerable<string> GetLinesFrom(string filename)
+        {
+            using (var file = File.OpenText(filename))
             {
                 var line = file.ReadLine();
                 while (line != null)
                 {
-                    Console.WriteLine(ExtractTargetFrom(line));
+                    yield return line;
                     line = file.ReadLine();
                 }
             }
