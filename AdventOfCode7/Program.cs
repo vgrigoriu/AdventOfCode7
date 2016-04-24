@@ -10,7 +10,11 @@ namespace AdventOfCode7
             using (var file = File.OpenText("input.txt"))
             {
                 var firstLine = file.ReadLine();
-                Console.WriteLine($">{firstLine}<");
+                while (firstLine != null)
+                {
+                    Console.WriteLine(firstLine);
+                    firstLine = file.ReadLine();
+                }
             }
         }
     }
