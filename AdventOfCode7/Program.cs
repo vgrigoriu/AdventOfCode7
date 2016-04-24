@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="Program.cs" company="Victor Grigoriu (vgrigoriu@gmail.com)">
+// Copyright (c) Victor Grigoriu (vgrigoriu@gmail.com). All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,14 +11,17 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode7
 {
-    class Program
+    /// <summary>
+    /// Entry point of the program
+    /// </summary>
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             var lines = GetLinesFrom("input.txt");
             var targets = lines.Select(ExtractTargetFrom).ToList();
 
-            Trace.Assert(targets.Count() == targets.Distinct().Count(), "targets are not unique");
+            Trace.Assert(targets.Count == targets.Distinct().Count(), "targets are not unique");
         }
 
         private static IEnumerable<string> GetLinesFrom(string filename)
