@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 
 namespace AdventOfCode7
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            using (var file = File.OpenText("input.txt"))
+            {
+                var firstLine = file.ReadLine();
+                Console.WriteLine($">{firstLine}<");
+            }
         }
     }
 }
