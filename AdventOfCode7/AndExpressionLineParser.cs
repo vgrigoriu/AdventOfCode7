@@ -2,26 +2,21 @@
 // Copyright (c) Victor Grigoriu (vgrigoriu@gmail.com). All rights reserved.
 // </copyright>
 
-using System.Text.RegularExpressions;
-
 namespace AdventOfCode7
 {
     /// <summary>
     /// For example:
     ///     af AND ah -> ai
     /// </summary>
-    internal sealed class AndExpressionLineParser : AssignmentParser
+    internal sealed class AndExpressionLineParser : BinaryExpressionLineParser
     {
         /// <inheritdoc/>
-        protected override Regex ExpressionRegex => new Regex("(?<firstOp>.*) AND (?<secondOp>.*)");
+        protected override string OperatorName => "AND";
 
         /// <inheritdoc/>
-        protected override Expression BuildExpression(string expressionText, GroupCollection groups)
+        protected override BinaryExpression BuildExpression(Variable firstOperand, Variable secondOperand)
         {
-            var firstOperand = groups["firstOp"].Value;
-            var secondOperand = groups["secondOp"].Value;
-
-            return new AndExpression(new Variable(firstOperand), new Variable(secondOperand));
+            return new AndExpression(firstOperand, secondOperand);
         }
     }
 }
