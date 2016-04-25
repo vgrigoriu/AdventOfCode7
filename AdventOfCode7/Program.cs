@@ -17,7 +17,8 @@ namespace AdventOfCode7
         private static ILineParser[] parsers =
             {
                 new ConstantExpressionLineParser(),
-                new NotExpressionLineParser()
+                new NotExpressionLineParser(),
+                new AndExpressionLineParser()
             };
 
         private static void Main()

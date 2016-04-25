@@ -55,6 +55,7 @@
     <Compile Include="AndExpressionLineParser.cs" />
     <Compile Include="Assignment.cs" />
     <Compile Include="AssignmentParser.cs" />
+    <Compile Include="BinaryExpression.cs" />
     <Compile Include="ConstantExpression.cs" />
     <Compile Include="ConstantExpressionLineParser.cs" />
     <Compile Include="Expression.cs" />

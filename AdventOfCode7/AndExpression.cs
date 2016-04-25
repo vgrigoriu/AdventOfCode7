@@ -7,7 +7,7 @@ namespace AdventOfCode7
     /// <summary>
     /// The bitwise AND of two variables
     /// </summary>
-    internal class AndExpression : Expression
+    internal class AndExpression : BinaryExpression
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AndExpression"/> class.
@@ -15,20 +15,9 @@ namespace AdventOfCode7
         /// <param name="firstOperand">The first operand</param>
         /// <param name="secondOperand">The second operand</param>
         public AndExpression(Variable firstOperand, Variable secondOperand)
+            : base(firstOperand, secondOperand)
         {
-            FirstOperand = firstOperand;
-            SecondOperand = secondOperand;
         }
-
-        /// <summary>
-        /// Gets the first operand
-        /// </summary>
-        public Variable FirstOperand { get; }
-
-        /// <summary>
-        /// Gets the second operand
-        /// </summary>
-        public Variable SecondOperand { get; }
 
         /// <inheritdoc/>
         public override ushort GetValue()
