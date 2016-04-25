@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndExpression.cs" />
+    <Compile Include="AndExpressionLineParser.cs" />
     <Compile Include="Assignment.cs" />
     <Compile Include="AssignmentParser.cs" />
     <Compile Include="ConstantExpression.cs" />
