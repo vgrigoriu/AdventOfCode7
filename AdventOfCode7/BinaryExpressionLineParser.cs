@@ -25,7 +25,7 @@ namespace AdventOfCode7
             var firstOperand = groups["firstOp"].Value;
             var secondOperand = groups["secondOp"].Value;
 
-            return new AndExpression(new Variable(firstOperand), new Variable(secondOperand));
+            return BuildExpression(new Variable(firstOperand), new Variable(secondOperand));
         }
 
         /// <summary>
