@@ -68,6 +68,7 @@
     <Compile Include="OrExpressionLineParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RightShiftExpression.cs" />
     <Compile Include="Variable.cs" />
   </ItemGroup>
   <ItemGroup>
