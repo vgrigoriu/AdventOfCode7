@@ -14,7 +14,7 @@ namespace AdventOfCode7
         /// </summary>
         /// <param name="firstOperand">The first operand</param>
         /// <param name="secondOperand">The second operand</param>
-        protected BinaryExpression(Variable firstOperand, Variable secondOperand)
+        protected BinaryExpression(Expression firstOperand, Expression secondOperand)
         {
             FirstOperand = firstOperand;
             SecondOperand = secondOperand;
@@ -23,12 +23,12 @@ namespace AdventOfCode7
         /// <summary>
         /// Gets the first operand
         /// </summary>
-        public Variable FirstOperand { get; }
+        public Expression FirstOperand { get; }
 
         /// <summary>
         /// Gets the second operand
         /// </summary>
-        public Variable SecondOperand { get; }
+        public Expression SecondOperand { get; }
 
         /// <summary>
         /// Deriving classes must implement ToString()
