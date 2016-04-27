@@ -20,7 +20,8 @@ namespace AdventOfCode7
                 new NotExpressionLineParser(),
                 new AndExpressionLineParser(),
                 new OrExpressionLineParser(),
-                new LeftShitfExpressionLineParser()
+                new LeftShitfExpressionLineParser(),
+                new RightShitfExpressionLineParser()
             };
 
         private static void Main()
@@ -43,6 +44,10 @@ namespace AdventOfCode7
             if (matchingParser != null)
             {
                 yield return matchingParser.GetAssignment(line);
+            }
+            else
+            {
+                throw new NotImplementedException($"Nobody knows how to parse: {line}");
             }
         }
 
