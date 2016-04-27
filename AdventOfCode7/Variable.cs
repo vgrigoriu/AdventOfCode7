@@ -2,13 +2,17 @@
 // Copyright (c) Victor Grigoriu (vgrigoriu@gmail.com). All rights reserved.
 // </copyright>
 
+using System;
+
 namespace AdventOfCode7
 {
     /// <summary>
     /// A variable.
     /// </summary>
-    internal class Variable
+    internal class Variable : Expression
     {
+        private readonly string name;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Variable"/> class.
         /// The variable will have the given name.
@@ -16,13 +20,17 @@ namespace AdventOfCode7
         /// <param name="name">The name of the variable.</param>
         public Variable(string name)
         {
-            Name = name;
+            this.name = name;
         }
 
-        /// <summary>
-        /// Gets the name of the variable.
-        /// </summary>
-        public string Name { get; }
+        /// <inheritdoc/>
+        /// <exception cref="NotImplementedException">
+        /// Not yet. This needs to be modified to take an environment -- list of variables
+        /// </exception>
+        public override ushort GetValue()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Returns the name of the variable.
@@ -30,7 +38,7 @@ namespace AdventOfCode7
         /// <returns>The name of the variable.</returns>
         public override string ToString()
         {
-            return Name;
+            return name;
         }
     }
 }
