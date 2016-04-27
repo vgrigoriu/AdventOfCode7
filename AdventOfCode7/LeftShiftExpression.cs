@@ -16,7 +16,7 @@ namespace AdventOfCode7
         /// </summary>
         /// <param name="firstOperand">The variable</param>
         /// <param name="secondOperand">How many bits to shift</param>
-        public LeftShiftExpression(Variable firstOperand, ConstantExpression secondOperand)
+        public LeftShiftExpression(Variable firstOperand, Expression secondOperand)
             : base(firstOperand, secondOperand)
         {
         }

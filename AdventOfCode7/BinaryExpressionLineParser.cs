@@ -29,11 +29,21 @@ namespace AdventOfCode7
         }
 
         /// <summary>
+        /// Override in derived classes to customize how the second operand is created
+        /// </summary>
+        /// <param name="secondOperandText">The text representation of the second parameter</param>
+        /// <returns>An expression that is the second operand of this binary expression</returns>
+        protected virtual Expression BuildSecondOperand(string secondOperandText)
+        {
+            return new Variable(secondOperandText);
+        }
+
+        /// <summary>
         /// Must be implemented by derived classes to build the actual expression they return
         /// </summary>
         /// <param name="firstOperand">The first operand</param>
         /// <param name="secondOperand">The second operand</param>
         /// <returns>A binary expression</returns>
-        protected abstract BinaryExpression BuildExpression(Variable firstOperand, Variable secondOperand);
+        protected abstract BinaryExpression BuildExpression(Variable firstOperand, Expression secondOperand);
     }
 }

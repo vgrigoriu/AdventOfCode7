@@ -19,7 +19,8 @@ namespace AdventOfCode7
                 new ConstantExpressionLineParser(),
                 new NotExpressionLineParser(),
                 new AndExpressionLineParser(),
-                new OrExpressionLineParser()
+                new OrExpressionLineParser(),
+                new LeftShitfExpressionLineParser()
             };
 
         private static void Main()

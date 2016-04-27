@@ -14,7 +14,7 @@ namespace AdventOfCode7
         /// </summary>
         /// <param name="firstOperand">The first operand</param>
         /// <param name="secondOperand">The second operand</param>
-        public AndExpression(Variable firstOperand, Variable secondOperand)
+        public AndExpression(Variable firstOperand, Expression secondOperand)
             : base(firstOperand, secondOperand)
         {
         }

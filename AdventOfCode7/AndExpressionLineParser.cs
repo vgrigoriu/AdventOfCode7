@@ -14,7 +14,7 @@ namespace AdventOfCode7
         protected override string OperatorName => "AND";
 
         /// <inheritdoc/>
-        protected override BinaryExpression BuildExpression(Variable firstOperand, Variable secondOperand)
+        protected override BinaryExpression BuildExpression(Variable firstOperand, Expression secondOperand)
         {
             return new AndExpression(firstOperand, secondOperand);
         }

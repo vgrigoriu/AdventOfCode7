@@ -45,6 +45,6 @@ namespace AdventOfCode7
         /// <returns>An expression.</returns>
         protected abstract Expression BuildExpression(string expressionText, GroupCollection groups);
 
-        private Regex AssignmentRegex() => new Regex($@"(?<exp>{ExpressionRegex}) -> (?<var>.*)");
+        private Regex AssignmentRegex() => new Regex($@"^(?<exp>{ExpressionRegex}) -> (?<var>.*)$");
     }
 }

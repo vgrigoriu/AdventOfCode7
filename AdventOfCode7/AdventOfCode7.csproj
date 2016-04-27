@@ -62,6 +62,7 @@
     <Compile Include="Expression.cs" />
     <Compile Include="ILineParser.cs" />
     <Compile Include="LeftShiftExpression.cs" />
+    <Compile Include="LeftShitfExpressionLineParser.cs" />
     <Compile Include="NotExpression.cs" />
     <Compile Include="NotExpressionLineParser.cs" />
     <Compile Include="OrExpression.cs" />
