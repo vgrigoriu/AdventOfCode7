@@ -2,6 +2,8 @@
 // Copyright (c) Victor Grigoriu (vgrigoriu@gmail.com). All rights reserved.
 // </copyright>
 
+using System;
+
 namespace AdventOfCode7
 {
     /// <summary>
@@ -14,16 +16,19 @@ namespace AdventOfCode7
         /// </summary>
         /// <param name="firstOperand">The first operand</param>
         /// <param name="secondOperand">The second operand</param>
-        public AndExpression(Variable firstOperand, Expression secondOperand)
+        public AndExpression(Expression firstOperand, Expression secondOperand)
             : base(firstOperand, secondOperand)
         {
         }
 
         /// <inheritdoc/>
-        public override ushort GetValue()
+        public override ushort GetValue(Environment environment)
         {
-            // Obviously, this is not the correct implementation.
-            return 451;
+            Console.WriteLine($"Evaluating {this}");
+            var leftSide = FirstOperand.GetValue(environment);
+            var rightSide = SecondOperand.GetValue(environment);
+
+            return (ushort)(leftSide & rightSide);
         }
 
         /// <inheritdoc/>

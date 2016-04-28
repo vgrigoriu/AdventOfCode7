@@ -2,6 +2,8 @@
 // Copyright (c) Victor Grigoriu (vgrigoriu@gmail.com). All rights reserved.
 // </copyright>
 
+using System;
+
 namespace AdventOfCode7
 {
     /// <summary>
@@ -24,10 +26,10 @@ namespace AdventOfCode7
         public Variable NegatedVariable { get; }
 
         /// <inheritdoc/>
-        public override ushort GetValue()
+        public override ushort GetValue(Environment environment)
         {
-            // Obviously, this is not the correct implementation.
-            return 666;
+            Console.WriteLine($"Evaluating {this}");
+            return (ushort)~NegatedVariable.GetValue(environment);
         }
 
         /// <inheritdoc/>

@@ -12,7 +12,8 @@ namespace AdventOfCode7
         /// <summary>
         /// Return the value of this expression.
         /// </summary>
+        /// <param name="environment">The environment in which to evaluate this expression</param>
         /// <returns>The value of this expression.</returns>
-        public abstract ushort GetValue();
+        public abstract ushort GetValue(Environment environment);
     }
 }

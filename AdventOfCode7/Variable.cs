@@ -12,6 +12,7 @@ namespace AdventOfCode7
     internal class Variable : Expression
     {
         private readonly string name;
+        private ushort? value;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Variable"/> class.
@@ -24,12 +25,18 @@ namespace AdventOfCode7
         }
 
         /// <inheritdoc/>
-        /// <exception cref="NotImplementedException">
-        /// Not yet. This needs to be modified to take an environment -- list of variables
-        /// </exception>
-        public override ushort GetValue()
+        public override ushort GetValue(Environment environment)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Evaluating {this}");
+
+            if (!value.HasValue)
+            {
+                var expression = environment.GetExpression(this);
+
+                value = expression.GetValue(environment);
+            }
+
+            return value.Value;
         }
 
         /// <summary>
@@ -39,6 +46,18 @@ namespace AdventOfCode7
         public override string ToString()
         {
             return name;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return name.GetHashCode();
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj)
+        {
+            return name.Equals((obj as Variable)?.name);
         }
     }
 }

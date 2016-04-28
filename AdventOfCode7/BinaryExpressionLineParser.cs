@@ -25,7 +25,26 @@ namespace AdventOfCode7
             var firstOperand = groups["firstOp"].Value;
             var secondOperand = groups["secondOp"].Value;
 
-            return BuildExpression(new Variable(firstOperand), new Variable(secondOperand));
+            return BuildExpression(BuildFirstOperand(firstOperand), BuildSecondOperand(secondOperand));
+        }
+
+        /// <summary>
+        /// Override in derived classes to customize how the first operand is created
+        /// </summary>
+        /// <param name="firstOperandText">The text representation of the first parameter</param>
+        /// <returns>An expression that is the first operand of this binary expression</returns>
+        protected virtual Expression BuildFirstOperand(string firstOperandText)
+        {
+            if (Regex.IsMatch(firstOperandText, @"^\d+$"))
+            {
+                ushort value;
+                if (ushort.TryParse(firstOperandText, out value))
+                {
+                    return new ConstantExpression(value);
+                }
+            }
+
+            return new Variable(firstOperandText);
         }
 
         /// <summary>
@@ -44,6 +63,6 @@ namespace AdventOfCode7
         /// <param name="firstOperand">The first operand</param>
         /// <param name="secondOperand">The second operand</param>
         /// <returns>A binary expression</returns>
-        protected abstract BinaryExpression BuildExpression(Variable firstOperand, Expression secondOperand);
+        protected abstract BinaryExpression BuildExpression(Expression firstOperand, Expression secondOperand);
     }
 }

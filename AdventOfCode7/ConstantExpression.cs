@@ -2,6 +2,8 @@
 // Copyright (c) Victor Grigoriu (vgrigoriu@gmail.com). All rights reserved.
 // </copyright>
 
+using System;
+
 namespace AdventOfCode7
 {
     /// <summary>
@@ -21,8 +23,10 @@ namespace AdventOfCode7
         }
 
         /// <inheritdoc/>
-        public override ushort GetValue()
+        public override ushort GetValue(Environment environment)
         {
+            Console.WriteLine($"Evaluating {this}");
+
             return value;
         }
 

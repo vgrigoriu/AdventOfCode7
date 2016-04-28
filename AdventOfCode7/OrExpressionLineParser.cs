@@ -14,7 +14,7 @@ namespace AdventOfCode7
         protected override string OperatorName => "OR";
 
         /// <inheritdoc/>
-        protected override BinaryExpression BuildExpression(Variable firstOperand, Expression secondOperand)
+        protected override BinaryExpression BuildExpression(Expression firstOperand, Expression secondOperand)
         {
             return new OrExpression(firstOperand, secondOperand);
         }

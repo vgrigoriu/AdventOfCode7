@@ -31,10 +31,13 @@ namespace AdventOfCode7
                               from assignment in ParseLine(line)
                               select assignment;
 
-            foreach (var assignment in assignments)
-            {
-                Console.WriteLine($"{assignment.Variable} = {assignment.Expression}");
-            }
+            var env = new Environment(assignments);
+
+            var expression = env.GetExpression(new Variable("lx"));
+
+            var value = expression.GetValue(env);
+
+            Console.WriteLine(value);
         }
 
         private static IEnumerable<Assignment> ParseLine(string line)

@@ -16,16 +16,19 @@ namespace AdventOfCode7
         /// </summary>
         /// <param name="firstOperand">The variable</param>
         /// <param name="secondOperand">How many bits to shift</param>
-        public LeftShiftExpression(Variable firstOperand, Expression secondOperand)
+        public LeftShiftExpression(Expression firstOperand, Expression secondOperand)
             : base(firstOperand, secondOperand)
         {
         }
 
         /// <inheritdoc/>
-        /// <exception cref="NotImplementedException">Not yet.</exception>
-        public override ushort GetValue()
+        public override ushort GetValue(Environment environment)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Evaluating {this}");
+            var leftSide = FirstOperand.GetValue(environment);
+            var rightSide = SecondOperand.GetValue(environment);
+
+            return (ushort)(leftSide << rightSide);
         }
 
         /// <inheritdoc/>

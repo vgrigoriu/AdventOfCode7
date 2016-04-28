@@ -16,7 +16,7 @@ namespace AdventOfCode7
         protected override string OperatorName => "LSHIFT";
 
         /// <inheritdoc/>
-        protected override BinaryExpression BuildExpression(Variable firstOperand, Expression secondOperand)
+        protected override BinaryExpression BuildExpression(Expression firstOperand, Expression secondOperand)
         {
             return new LeftShiftExpression(firstOperand, secondOperand);
         }

@@ -24,7 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <DocumentationFile>bin\Debug\AdventOfCode7.XML</DocumentationFile>
     <CodeAnalysisRuleSet>AdventOfCode7.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -59,6 +59,7 @@
     <Compile Include="BinaryExpressionLineParser.cs" />
     <Compile Include="ConstantExpression.cs" />
     <Compile Include="ConstantExpressionLineParser.cs" />
+    <Compile Include="Environment.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="ILineParser.cs" />
     <Compile Include="LeftShiftExpression.cs" />
